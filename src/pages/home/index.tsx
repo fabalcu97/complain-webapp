@@ -13,11 +13,11 @@ import {
 import { CompanyListItem } from 'components/CompanyListItem';
 import { CompanySearchInput } from 'components/companySearchInput';
 import type { NextPage } from 'next';
+import { useState } from 'react';
 import {
   generateBadCompanies,
   generateGoodCompanies,
-} from 'pages/home/constants';
-import { useState } from 'react';
+} from 'temporal/homeConstants';
 import { Noop } from 'utils';
 import { CompanyType } from 'utils/types/company';
 import styles from './styles.module.scss';

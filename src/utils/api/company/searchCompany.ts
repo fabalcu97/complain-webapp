@@ -1,4 +1,4 @@
-import { generateBadCompanies } from 'pages/home/constants';
+import { generateBadCompanies } from 'temporal/homeConstants';
 import { CompanyType } from 'utils/types/company';
 
 export async function searchCompaniesRequest(
