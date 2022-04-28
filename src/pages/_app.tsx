@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     router.push('/home');
-  }, [router]);
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
