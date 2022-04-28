@@ -4,8 +4,8 @@ import {
   ListItemAvatar,
   ListItemText,
   Rating,
-  Typography,
 } from '@mui/material';
+import { useRouter } from 'next/router';
 import { CompanyType } from 'utils/types/company';
 
 type Props = {
@@ -14,9 +14,15 @@ type Props = {
 
 export function CompanyListItem(props: Props) {
   const { company } = props;
+  const router = useRouter();
+
+  const goToCompany = () => router.push(`/company/${company.id}`);
 
   return (
-    <ListItem alignItems='flex-start'>
+    <ListItem
+      alignItems='flex-start'
+      onClick={goToCompany}
+      sx={{ cursor: 'pointer' }}>
       <ListItemAvatar>
         <Avatar alt={`${company.name} Logo image`} src={company.logoUrl} />
       </ListItemAvatar>
