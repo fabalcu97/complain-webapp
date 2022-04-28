@@ -1,0 +1,45 @@
+import { Autocomplete, TextField } from '@mui/material';
+import { CompanyListItem } from 'components/CompanyListItem';
+import { GridItem } from 'components/GridItem';
+import React, { SyntheticEvent, useEffect, useState } from 'react';
+import { useSearchCompany } from 'utils/hooks/api/useSearchCompany';
+import { CompanyType } from 'utils/types/company';
+
+type Props = {
+  label: string;
+};
+
+export function CompanySearchInput(props: Props) {
+  const { label } = props;
+  const [options, setOptions] = useState<CompanyType[]>([]);
+  const [searchValue, setSearchValue] = useState('');
+  const { data, isLoading, error } = useSearchCompany(searchValue);
+
+  const changeText = (_: SyntheticEvent, text: string) => setSearchValue(text);
+
+  useEffect(() => {
+    if (data) {
+      setOptions(data);
+    }
+  }, [data]);
+
+  return (
+    <GridItem>
+      <Autocomplete
+        options={options}
+        inputValue={searchValue}
+        onInputChange={changeText}
+        renderInput={(params) => (
+          <TextField {...params} label={label} fullWidth />
+        )}
+        getOptionLabel={(option) =>
+          typeof option === 'string' ? option : option.name
+        }
+        loading={isLoading}
+        renderOption={(props, option) => (
+          <CompanyListItem key={option.id} company={option} />
+        )}
+      />
+    </GridItem>
+  );
+}

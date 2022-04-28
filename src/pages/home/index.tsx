@@ -8,16 +8,17 @@ import {
   List,
   ListSubheader,
   Typography,
+  useMediaQuery,
 } from '@mui/material';
 import { CompanyListItem } from 'components/CompanyListItem';
-import { GridItem } from 'components/GridItem';
-import { random } from 'lodash';
+import { CompanySearchInput } from 'components/companySearchInput';
 import type { NextPage } from 'next';
 import {
   generateBadCompanies,
   generateGoodCompanies,
 } from 'pages/home/constants';
 import { useState } from 'react';
+import { Noop } from 'utils';
 import { CompanyType } from 'utils/types/company';
 import styles from './styles.module.scss';
 
@@ -30,40 +31,28 @@ type ServerSideReturnType = {
   props: Props;
 };
 
-// TODO: Collapse only if mobile
 const Home: NextPage<Props> = (props: Props) => {
   const { bestCompanies, worstCompanies } = props;
   const [openBestCompaniesList, setOpenBestCompaniesList] = useState(false);
   const [openWorstCompaniesList, setOpenWorstCompaniesList] = useState(false);
 
+  const isMobile = useMediaQuery('(max-width:768px)');
+  const CollapseComponent = isMobile ? Collapse : Noop;
+
   return (
     <Container fixed>
       <Grid container spacing={2} marginTop={'10px'} marginBottom={'10px'}>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={12}>
           <Card>
             <CardContent>
-              <Typography>Leave a review</Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <Card>
-            <CardContent>
-              <Typography>Raise a complain</Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <Card>
-            <CardContent>
-              <Typography>Search</Typography>
+              <CompanySearchInput label='Search for a company' />
             </CardContent>
           </Card>
         </Grid>
         <Grid item xs={12} md={6}>
           <Card>
             <CardContent>
-              <Collapse in={openBestCompaniesList} collapsedSize={50}>
+              <CollapseComponent in={openBestCompaniesList} collapsedSize={50}>
                 <List
                   sx={{ maxHeight: '70vh', overflow: 'auto' }}
                   subheader={<li />}>
@@ -72,7 +61,8 @@ const Home: NextPage<Props> = (props: Props) => {
                     className={styles.collapsibleHeader}
                     onClick={() => setOpenBestCompaniesList((v) => !v)}>
                     <Typography>Better rated companies</Typography>
-                    {openBestCompaniesList ? <ExpandLess /> : <ExpandMore />}
+                    {isMobile &&
+                      (openBestCompaniesList ? <ExpandLess /> : <ExpandMore />)}
                   </ListSubheader>
                   {bestCompanies.map((company, idx) => (
                     <CompanyListItem
@@ -81,14 +71,14 @@ const Home: NextPage<Props> = (props: Props) => {
                     />
                   ))}
                 </List>
-              </Collapse>
+              </CollapseComponent>
             </CardContent>
           </Card>
         </Grid>
         <Grid item xs={12} md={6}>
           <Card>
             <CardContent>
-              <Collapse in={openWorstCompaniesList} collapsedSize={50}>
+              <CollapseComponent in={openWorstCompaniesList} collapsedSize={50}>
                 <List
                   sx={{ maxHeight: '70vh', overflow: 'auto' }}
                   subheader={<li />}>
@@ -97,7 +87,12 @@ const Home: NextPage<Props> = (props: Props) => {
                     className={styles.collapsibleHeader}
                     onClick={() => setOpenWorstCompaniesList((v) => !v)}>
                     <Typography>Worst rated companies</Typography>
-                    {openWorstCompaniesList ? <ExpandLess /> : <ExpandMore />}
+                    {isMobile &&
+                      (openWorstCompaniesList ? (
+                        <ExpandLess />
+                      ) : (
+                        <ExpandMore />
+                      ))}
                   </ListSubheader>
                   {worstCompanies.map((company, idx) => (
                     <CompanyListItem
@@ -106,7 +101,7 @@ const Home: NextPage<Props> = (props: Props) => {
                     />
                   ))}
                 </List>
-              </Collapse>
+              </CollapseComponent>
             </CardContent>
           </Card>
         </Grid>
