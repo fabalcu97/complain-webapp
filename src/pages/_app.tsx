@@ -13,7 +13,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   useEffect(() => {
-    router.push('/home');
+    if (router.asPath === '/') {
+      router.push('/home');
+    }
   }, []);
 
   return (
