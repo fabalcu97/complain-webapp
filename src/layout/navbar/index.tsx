@@ -1,4 +1,11 @@
-import { AppBar, Button, Grid, Toolbar, Typography } from '@mui/material';
+import {
+  AppBar,
+  Avatar,
+  Button,
+  Grid,
+  Toolbar,
+  Typography,
+} from '@mui/material';
 import { HeaderMenu } from 'components/headerMenu';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
@@ -16,9 +23,11 @@ export function Navbar() {
   );
 
   const goToHome = () => router.push('/home');
+  const logIn = () => {};
+  const signUp = () => {};
 
   return (
-    <AppBar position='static' variant={'elevation'}>
+    <AppBar position='sticky' variant={'elevation'}>
       <Toolbar>
         <Typography
           variant='h4'
@@ -28,23 +37,17 @@ export function Navbar() {
           onClick={goToHome}>
           Complain
         </Typography>
-        <div className={styles.navlinks}>
-          <Button color={'inherit'}>Log In</Button>
-          <Button color={'inherit'}>Sign Up</Button>
-        </div>
-      </Toolbar>
-      <Toolbar>
-        <Grid container>
-          <Grid item xs={4} md={2}>
-            <HeaderMenu label={'Categories'} menu={categoriesMenu} />
-          </Grid>
-          <Grid item xs={4} md={2}>
-            <HeaderMenu label={'Ranking'} navigateTo={'/ranking'} />
-          </Grid>
-          <Grid item xs={4} md={2}>
-            <HeaderMenu label={'Contact Us'} navigateTo={'/contact-us'} />
-          </Grid>
-        </Grid>
+        <HeaderMenu label={'Categories'} menu={categoriesMenu} />
+        {/* <HeaderMenu label={'Ranking'} navigateTo={'/ranking'} /> */}
+        <HeaderMenu label={'Contact Us'} navigateTo={'/contact-us'} />
+        {false ? (
+          <Avatar />
+        ) : (
+          <>
+            <HeaderMenu label='Log In' onClick={logIn} />
+            <HeaderMenu label='Sign Up' onClick={signUp} />
+          </>
+        )}
       </Toolbar>
     </AppBar>
   );

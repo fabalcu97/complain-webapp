@@ -13,7 +13,7 @@ export function CompanySearchInput(props: Props) {
   const { label } = props;
   const [options, setOptions] = useState<CompanyType[]>([]);
   const [searchValue, setSearchValue] = useState('');
-  const { data, isLoading, error } = useSearchCompany(searchValue);
+  const { data, isLoading } = useSearchCompany(searchValue);
 
   const changeText = (_: SyntheticEvent, text: string) => setSearchValue(text);
 
@@ -24,7 +24,7 @@ export function CompanySearchInput(props: Props) {
   }, [data]);
 
   return (
-    <GridItem>
+    <GridItem elevation={0}>
       <Autocomplete
         options={options}
         inputValue={searchValue}

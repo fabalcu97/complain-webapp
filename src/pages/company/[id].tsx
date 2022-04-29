@@ -1,8 +1,20 @@
-import { Avatar, Box, Container, Grid, Typography } from '@mui/material';
+import {
+  Avatar,
+  Button,
+  Container,
+  Divider,
+  Grid,
+  IconButton,
+  Typography,
+} from '@mui/material';
 import { CompanyReputation } from 'components/companyReputation';
 import { GridItem } from 'components/GridItem';
+import moment from 'moment';
 import { NextPage } from 'next';
 import { CompanyDetailType } from 'utils/types/companyDetail';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import styles from './styles.module.scss';
 
 type Props = {
   companyDetail: CompanyDetailType;
@@ -41,11 +53,64 @@ const Company: NextPage<Props> = (props: Props) => {
           <GridItem>xs=4</GridItem>
         </Grid>
         <Grid item xs={12} md={3}>
-          <GridItem>
-            <Typography>About {companyDetail.name}</Typography>
-            <Typography variant='body2' gutterBottom>
-              {companyDetail.about}
-            </Typography>
+          <GridItem className={styles.aboutContainer}>
+            <div className={styles.companyDescription}>
+              <Typography variant='subtitle1' fontWeight={'500'}>
+                About {companyDetail.name}
+              </Typography>
+              <Typography variant='body2' gutterBottom>
+                {companyDetail.about}
+              </Typography>
+            </div>
+            <GridItem elevation={0}>
+              <div className={styles.companyDetails}>
+                <Typography variant='subtitle2'>Member since</Typography>
+                <Typography className={styles.innerText}>
+                  {moment(companyDetail.registeredAt).format('MMMM YYYY')}
+                </Typography>
+              </div>
+              <Divider />
+              <div className={styles.companyDetails}>
+                <Typography variant='subtitle2'>Legal ID</Typography>
+                <Typography className={styles.innerText}>
+                  {companyDetail.legalId}
+                </Typography>
+              </div>
+              <Divider />
+              <div className={styles.companyDetails}>
+                <Typography variant='subtitle2'>Email</Typography>
+                <Typography className={styles.innerText}>
+                  {companyDetail.contactEmail}
+                </Typography>
+              </div>
+              <Divider />
+              <div className={styles.companyDetails}>
+                <Typography variant='subtitle2'>Phone</Typography>
+                <Typography className={styles.innerText}>
+                  {companyDetail.phoneNumber}
+                </Typography>
+              </div>
+              <Divider />
+              <div className={styles.companyDetails}>
+                <Typography variant='subtitle2'>Social Networks</Typography>
+                <Grid>
+                  {companyDetail.facebookPage && (
+                    <IconButton
+                      href={companyDetail.facebookPage}
+                      target='_blank'>
+                      <FacebookIcon />
+                    </IconButton>
+                  )}
+                  {companyDetail.instagramPage && (
+                    <IconButton
+                      href={companyDetail.instagramPage}
+                      target='_blank'>
+                      <InstagramIcon />
+                    </IconButton>
+                  )}
+                </Grid>
+              </div>
+            </GridItem>
           </GridItem>
         </Grid>
       </Grid>
@@ -61,9 +126,15 @@ export async function getServerSideProps(): Promise<ServerSideProps> {
       companyDetail: {
         about:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras consectetur ullamcorper aliquet. Morbi pellentesque lacus nec urna bibendum, et tristique velit congue. Praesent et libero metus. Quisque tincidunt lorem lorem, quis eleifend sapien aliquet porta. Etiam consectetur vulputate molestie. Nulla sodales diam non aliquet commodo.',
+        registeredAt: new Date().toISOString(),
         logoUrl:
           'https://www.pinclipart.com/picdir/big/51-511102_feather-arrow-clip-art.png',
         name: 'Business',
+        legalId: '1231312312',
+        contactEmail: 'contaasdadsadct@business.com',
+        phoneNumber: '+51999876567',
+        facebookPage: 'https://www.facebook.com',
+        instagramPage: 'https://www.instagram.com',
         stats: {
           feeling: {
             happy: 0.85,

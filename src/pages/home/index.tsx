@@ -2,6 +2,7 @@ import { ExpandLess, ExpandMore } from '@mui/icons-material';
 import {
   Card,
   CardContent,
+  Divider,
   Collapse,
   Container,
   Grid,
@@ -53,9 +54,7 @@ const Home: NextPage<Props> = (props: Props) => {
           <Card>
             <CardContent>
               <CollapseComponent in={openBestCompaniesList} collapsedSize={50}>
-                <List
-                  sx={{ maxHeight: '70vh', overflow: 'auto' }}
-                  subheader={<li />}>
+                <List subheader={<li />}>
                   <ListSubheader
                     disableGutters
                     className={styles.collapsibleHeader}
@@ -65,10 +64,13 @@ const Home: NextPage<Props> = (props: Props) => {
                       (openBestCompaniesList ? <ExpandLess /> : <ExpandMore />)}
                   </ListSubheader>
                   {bestCompanies.map((company, idx) => (
-                    <CompanyListItem
-                      key={`${company.id}-${idx}`}
-                      company={company}
-                    />
+                    <>
+                      <Divider />
+                      <CompanyListItem
+                        key={`${company.id}-${idx}`}
+                        company={company}
+                      />
+                    </>
                   ))}
                 </List>
               </CollapseComponent>
@@ -79,9 +81,7 @@ const Home: NextPage<Props> = (props: Props) => {
           <Card>
             <CardContent>
               <CollapseComponent in={openWorstCompaniesList} collapsedSize={50}>
-                <List
-                  sx={{ maxHeight: '70vh', overflow: 'auto' }}
-                  subheader={<li />}>
+                <List subheader={<li />}>
                   <ListSubheader
                     disableGutters
                     className={styles.collapsibleHeader}
@@ -95,10 +95,13 @@ const Home: NextPage<Props> = (props: Props) => {
                       ))}
                   </ListSubheader>
                   {worstCompanies.map((company, idx) => (
-                    <CompanyListItem
-                      key={`${company.id}-${idx}`}
-                      company={company}
-                    />
+                    <>
+                      <Divider />
+                      <CompanyListItem
+                        key={`${company.id}-${idx}`}
+                        company={company}
+                      />
+                    </>
                   ))}
                 </List>
               </CollapseComponent>
@@ -115,10 +118,10 @@ export default Home;
 export async function getServerSideProps(): Promise<ServerSideReturnType> {
   return {
     props: {
-      bestCompanies: generateGoodCompanies(20).sort(
+      bestCompanies: generateGoodCompanies(10).sort(
         (a, b) => b.rating - a.rating,
       ),
-      worstCompanies: generateBadCompanies(20).sort(
+      worstCompanies: generateBadCompanies(10).sort(
         (a, b) => a.rating - b.rating,
       ),
     },

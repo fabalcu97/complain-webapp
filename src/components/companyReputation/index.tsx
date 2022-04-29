@@ -6,6 +6,7 @@ import {
   linearProgressClasses,
   Typography,
   Box,
+  Divider,
 } from '@mui/material';
 import { GridItem } from 'components/GridItem';
 import React from 'react';
@@ -61,7 +62,7 @@ export function CompanyReputation(props: Props) {
   return (
     <Card>
       <CardContent>
-        <GridItem elevation={1} className={styles.countContainer}>
+        <GridItem elevation={0} className={styles.countContainer}>
           <Grid container xs={12}>
             <Grid xs={12}>
               <Typography textAlign='center' marginBottom={'10px'}>
@@ -98,7 +99,8 @@ export function CompanyReputation(props: Props) {
             </Grid>
           </Grid>
         </GridItem>
-        <GridItem elevation={1} className={styles.countContainer}>
+        <Divider />
+        <GridItem elevation={0} className={styles.countContainer}>
           <Grid container xs={12}>
             <Grid xs={12}>
               <Typography textAlign='center' marginBottom={'10px'}>
@@ -120,7 +122,8 @@ export function CompanyReputation(props: Props) {
             </Grid>
           </Grid>
         </GridItem>
-        <GridItem elevation={1} className={styles.countContainer}>
+        <Divider />
+        <GridItem elevation={0} className={styles.countContainer}>
           <Typography textAlign='center' marginBottom={'10px'}>
             Would do business again
           </Typography>

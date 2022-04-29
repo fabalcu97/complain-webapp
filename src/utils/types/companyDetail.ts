@@ -15,4 +15,10 @@ export type CompanyDetailType = {
       pending: number;
     };
   };
+  registeredAt: string;
+  legalId: string;
+  contactEmail: string;
+  phoneNumber: string;
+  facebookPage: string;
+  instagramPage: string;
 };
