@@ -1,0 +1,19 @@
+.progressBarContainer {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  .linearProgressContainer {
+    display: flex;
+    width: 100%;
+    flex: 1;
+    align-items: center;
+
+    .valueLabel {
+      margin-left: 10px;
+    }
+  }
+}
