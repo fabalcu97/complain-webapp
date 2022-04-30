@@ -1,4 +1,4 @@
-import { generateBadCompanies } from 'temporal/homeConstants';
+import { generateCompanies } from 'temporal/homeConstants';
 import { CompanyType } from 'utils/types/company';
 
 export async function searchCompaniesRequest(
@@ -6,7 +6,7 @@ export async function searchCompaniesRequest(
 ): Promise<CompanyType[]> {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(generateBadCompanies());
+      resolve(generateCompanies());
     }, 2000);
   });
 }

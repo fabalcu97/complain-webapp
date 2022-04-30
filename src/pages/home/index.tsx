@@ -2,7 +2,6 @@ import { ExpandLess, ExpandMore } from '@mui/icons-material';
 import {
   Card,
   CardContent,
-  Divider,
   Collapse,
   Container,
   Grid,
@@ -16,8 +15,7 @@ import { CompanySearchInput } from 'components/companySearchInput';
 import type { NextPage } from 'next';
 import { useState } from 'react';
 import {
-  generateBadCompanies,
-  generateGoodCompanies,
+  generateCompanies,
 } from 'temporal/homeConstants';
 import { Noop } from 'utils';
 import { CompanyType } from 'utils/types/company';
@@ -112,10 +110,10 @@ export default Home;
 export async function getServerSideProps(): Promise<ServerSideReturnType> {
   return {
     props: {
-      bestCompanies: generateGoodCompanies(10).sort(
+      bestCompanies: generateCompanies(10, true).sort(
         (a, b) => b.rating - a.rating,
       ),
-      worstCompanies: generateBadCompanies(10).sort(
+      worstCompanies: generateCompanies(10, false).sort(
         (a, b) => a.rating - b.rating,
       ),
     },

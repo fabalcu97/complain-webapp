@@ -1,22 +1,16 @@
-import { random } from 'lodash';
+import faker from '@faker-js/faker';
 import { CompanyType } from 'utils/types/company';
 
-export const generateGoodCompanies = (amount = 10): CompanyType[] => {
+export const generateCompanies = (
+  amount = 10,
+  isGood = true,
+): CompanyType[] => {
   return Array.from(Array(amount)).map((_, idx) => ({
     id: idx,
-    name: `Business ${idx}`,
-    logoUrl:
-      'https://www.pinclipart.com/picdir/big/51-511102_feather-arrow-clip-art.png',
-    rating: random(3, 5, true),
-  }));
-};
-
-export const generateBadCompanies = (amount = 10): CompanyType[] => {
-  return Array.from(Array(amount)).map((_, idx) => ({
-    id: idx,
-    name: `Business ${idx}`,
-    logoUrl:
-      'https://www.pinclipart.com/picdir/big/51-511102_feather-arrow-clip-art.png',
-    rating: random(0, 2.5, true),
+    name: faker.company.companyName(),
+    logoUrl: faker.image.business(),
+    rating: isGood
+      ? faker.datatype.number({ min: 3, max: 5, precision: 2 })
+      : faker.datatype.number({ min: 0, max: 2.9, precision: 2 }),
   }));
 };

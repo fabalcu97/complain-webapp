@@ -15,6 +15,7 @@ import { CompanyDetailType } from 'utils/types/companyDetail';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import styles from './styles.module.scss';
+import { getCompanyDetail } from 'temporal/company';
 
 type Props = {
   companyDetail: CompanyDetailType;
@@ -123,32 +124,7 @@ export default Company;
 export async function getServerSideProps(): Promise<ServerSideProps> {
   return {
     props: {
-      companyDetail: {
-        about:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras consectetur ullamcorper aliquet. Morbi pellentesque lacus nec urna bibendum, et tristique velit congue. Praesent et libero metus. Quisque tincidunt lorem lorem, quis eleifend sapien aliquet porta. Etiam consectetur vulputate molestie. Nulla sodales diam non aliquet commodo.',
-        registeredAt: new Date().toISOString(),
-        logoUrl:
-          'https://www.pinclipart.com/picdir/big/51-511102_feather-arrow-clip-art.png',
-        name: 'Business',
-        legalId: '1231312312',
-        contactEmail: 'contaasdadsadct@business.com',
-        phoneNumber: '+51999876567',
-        facebookPage: 'https://www.facebook.com',
-        instagramPage: 'https://www.instagram.com',
-        stats: {
-          feeling: {
-            happy: 0.85,
-            neutral: 0.03,
-            unhappy: 0.12,
-          },
-          wouldDoBusinessAgain: 0.75,
-          complains: {
-            total: 13,
-            answered: 9,
-            pending: 4,
-          },
-        },
-      },
+      companyDetail: getCompanyDetail()
     },
   };
 }
