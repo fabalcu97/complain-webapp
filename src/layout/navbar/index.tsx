@@ -1,11 +1,4 @@
-import {
-  AppBar,
-  Avatar,
-  Button,
-  Grid,
-  Toolbar,
-  Typography,
-} from '@mui/material';
+import { AppBar, Avatar, Toolbar, Typography } from '@mui/material';
 import { HeaderMenu } from 'components/headerMenu';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
@@ -13,14 +6,14 @@ import styles from './styles.module.scss';
 
 export function Navbar() {
   const router = useRouter();
-  const categoriesMenu = useMemo<{ label: string; navigateTo: string }[]>(
-    () => [
-      { label: 'Food', navigateTo: '/categories/food' },
-      { label: 'Electronics', navigateTo: '/categories/electronics' },
-      { label: 'Health', navigateTo: '/categories/health' },
-    ],
-    [],
-  );
+  // const categoriesMenu = useMemo<{ label: string; navigateTo: string }[]>(
+  //   () => [
+  //     { label: 'Food', navigateTo: '/categories/food' },
+  //     { label: 'Electronics', navigateTo: '/categories/electronics' },
+  //     { label: 'Health', navigateTo: '/categories/health' },
+  //   ],
+  //   [],
+  // );
 
   const goToHome = () => router.push('/home');
   const logIn = () => {};
@@ -37,7 +30,7 @@ export function Navbar() {
           onClick={goToHome}>
           Complain
         </Typography>
-        <HeaderMenu label={'Categories'} menu={categoriesMenu} />
+        {/* <HeaderMenu label={'Categories'} menu={categoriesMenu} /> */}
         {/* <HeaderMenu label={'Ranking'} navigateTo={'/ranking'} /> */}
         <HeaderMenu label={'Contact Us'} navigateTo={'/contact-us'} />
         {false ? (
