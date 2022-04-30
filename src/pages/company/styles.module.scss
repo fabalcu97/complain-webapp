@@ -1,25 +1,4 @@
 .container {
-  flex-grow: 1;
   padding-top: 16px;
   margin-bottom: 16px;
-}
-
-.aboutContainer {
-  padding: 16px;
-
-  .companyDescription {
-    margin-bottom: 15px;
-  }
-
-  .companyDetails {
-    margin: 15px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-    .innerText {
-      width: 100%;
-      overflow: auto;
-    }
-  }
 }

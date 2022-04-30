@@ -1,6 +1,6 @@
 export enum ComplainStatusEnum {
   ANSWERED = 'ANSWERED',
-  NOT_ANSWERED = 'NOT_ANSWERED',
+  UNANSWERED = 'UNANSWERED',
 }
 
 export type ComplainType = {

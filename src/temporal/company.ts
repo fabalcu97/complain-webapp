@@ -3,13 +3,14 @@ import { CompanyDetailType } from 'utils/types/companyDetail';
 
 export function getCompanyDetail(): CompanyDetailType {
   return {
+    id: faker.datatype.uuid(),
     about: faker.lorem.paragraph(),
     registeredAt: faker.date.past().toISOString(),
     logoUrl: faker.image.business(),
     name: faker.company.companyName(),
     legalId: faker.random.alphaNumeric(11),
     contactEmail: faker.internet.email(),
-    phoneNumber: faker.phone.phoneNumber(),
+    phoneNumber: faker.phone.phoneNumberFormat(),
     facebookPage: faker.internet.url(),
     instagramPage: faker.internet.url(),
     stats: {

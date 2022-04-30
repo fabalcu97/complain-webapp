@@ -1,3 +1,13 @@
 .complainListContainer {
-  
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 16px;
+  align-items: center;
+
+  .list {
+    flex: 9;
+    overflow: auto;
+    width: 100%;
+  }
 }

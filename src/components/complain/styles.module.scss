@@ -1,0 +1,29 @@
+.complainContainer {
+  flex: 1;
+  width: 100%;
+
+  .title {
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+
+  .chips {
+    overflow: auto;
+    .chip {
+      margin: 0 5px;
+    }
+  }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    text-transform: capitalize;
+
+    .status {
+      font-size: 12px;
+    }
+    .createdDate {
+      font-size: 12px;
+    }
+  }
+}

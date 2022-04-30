@@ -1,3 +1,3 @@
 export type BaseComponentProps = {
-  containerStyle: string;
+  containerStyle?: string;
 };

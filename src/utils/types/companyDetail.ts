@@ -1,4 +1,5 @@
 export type CompanyDetailType = {
+  id: string;
   name: string;
   logoUrl: string;
   about: string;
