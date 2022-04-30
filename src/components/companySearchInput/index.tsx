@@ -1,6 +1,6 @@
 import { Autocomplete, TextField } from '@mui/material';
-import { CompanyListItem } from 'components/CompanyListItem';
-import { GridItem } from 'components/GridItem';
+import { CompanyListItem } from 'components/companyListItem';
+import { GridItem } from 'components/gridItem';
 import React, { SyntheticEvent, useEffect, useState } from 'react';
 import { useSearchCompany } from 'utils/hooks/api/useSearchCompany';
 import { CompanyType } from 'utils/types/company';

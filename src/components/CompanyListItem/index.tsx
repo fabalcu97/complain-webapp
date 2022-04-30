@@ -20,6 +20,7 @@ export function CompanyListItem(props: Props) {
 
   return (
     <ListItem
+      divider
       alignItems='flex-start'
       onClick={goToCompany}
       sx={{ cursor: 'pointer' }}>

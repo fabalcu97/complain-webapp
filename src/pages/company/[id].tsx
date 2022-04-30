@@ -8,7 +8,7 @@ import {
   Typography,
 } from '@mui/material';
 import { CompanyReputation } from 'components/companyReputation';
-import { GridItem } from 'components/GridItem';
+import { GridItem } from 'components/gridItem';
 import moment from 'moment';
 import { NextPage } from 'next';
 import { CompanyDetailType } from 'utils/types/companyDetail';
@@ -27,7 +27,7 @@ type ServerSideProps = {
 const Company: NextPage<Props> = (props: Props) => {
   const { companyDetail } = props;
   return (
-    <Container sx={{ flexGrow: 1, paddingTop: '16px' }}>
+    <Container className={styles.container} >
       <Grid container spacing={2}>
         <Grid
           item

@@ -8,7 +8,7 @@ import {
   Box,
   Divider,
 } from '@mui/material';
-import { GridItem } from 'components/GridItem';
+import { GridItem } from 'components/gridItem';
 import React from 'react';
 import { CompanyDetailType } from 'utils/types/companyDetail';
 import styles from './styles.module.scss';
@@ -22,7 +22,8 @@ type Props = {
 
 const normalize = (value: number) => `${value * 100}%`;
 
-const Score = ({ label, value }: { label: string; value: number }) => (
+
+const Score = ({ label = '', value }: { label: string; value: number }) => (
   <Box
     sx={{
       marginTop: '10px',
@@ -63,20 +64,20 @@ export function CompanyReputation(props: Props) {
     <Card>
       <CardContent>
         <GridItem elevation={0} className={styles.countContainer}>
-          <Grid container xs={12}>
-            <Grid xs={12}>
+          <Grid container item xs={12}>
+            <Grid item xs={12}>
               <Typography textAlign='center' marginBottom={'10px'}>
                 User Feeling
               </Typography>
             </Grid>
-            <Grid xs={4} container flexDirection='column' textAlign='center'>
+            <Grid item xs={4} container flexDirection='column' textAlign='center'>
               <div className={styles.count}>
                 <SentimentVerySatisfiedIcon color='success' />
                 {normalize(stats.feeling.happy)}
               </div>
             </Grid>
             <Grid
-              xs={4}
+              item xs={4}
               container
               flexDirection='column'
               textAlign='center'
@@ -87,7 +88,7 @@ export function CompanyReputation(props: Props) {
               </div>
             </Grid>
             <Grid
-              xs={4}
+              item xs={4}
               container
               flexDirection='column'
               textAlign='center'
@@ -101,18 +102,18 @@ export function CompanyReputation(props: Props) {
         </GridItem>
         <Divider />
         <GridItem elevation={0} className={styles.countContainer}>
-          <Grid container xs={12}>
-            <Grid xs={12}>
+          <Grid container item xs={12}>
+            <Grid item xs={12}>
               <Typography textAlign='center' marginBottom={'10px'}>
                 Complains
               </Typography>
             </Grid>
-            <Grid xs={6} container flexDirection='column' textAlign='center'>
+            <Grid item xs={6} container flexDirection='column' textAlign='center'>
               <div className={styles.label}>Answered</div>
               <div className={styles.count}>{stats.complains.answered}</div>
             </Grid>
             <Grid
-              xs={6}
+              item xs={6}
               container
               flexDirection='column'
               textAlign='center'
@@ -127,7 +128,7 @@ export function CompanyReputation(props: Props) {
           <Typography textAlign='center' marginBottom={'10px'}>
             Would do business again
           </Typography>
-          <Score label='' value={stats.wouldDoBusinessAgain * 100} />
+          <Score value={stats.wouldDoBusinessAgain * 100} />
         </GridItem>
       </CardContent>
     </Card>

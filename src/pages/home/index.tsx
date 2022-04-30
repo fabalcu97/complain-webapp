@@ -11,7 +11,7 @@ import {
   Typography,
   useMediaQuery,
 } from '@mui/material';
-import { CompanyListItem } from 'components/CompanyListItem';
+import { CompanyListItem } from 'components/companyListItem';
 import { CompanySearchInput } from 'components/companySearchInput';
 import type { NextPage } from 'next';
 import { useState } from 'react';
@@ -64,13 +64,10 @@ const Home: NextPage<Props> = (props: Props) => {
                       (openBestCompaniesList ? <ExpandLess /> : <ExpandMore />)}
                   </ListSubheader>
                   {bestCompanies.map((company, idx) => (
-                    <>
-                      <Divider />
-                      <CompanyListItem
-                        key={`${company.id}-${idx}`}
-                        company={company}
-                      />
-                    </>
+                    <CompanyListItem
+                      key={`${company.id}-${idx}`}
+                      company={company}
+                    />
                   ))}
                 </List>
               </CollapseComponent>
@@ -95,13 +92,10 @@ const Home: NextPage<Props> = (props: Props) => {
                       ))}
                   </ListSubheader>
                   {worstCompanies.map((company, idx) => (
-                    <>
-                      <Divider />
-                      <CompanyListItem
-                        key={`${company.id}-${idx}`}
-                        company={company}
-                      />
-                    </>
+                    <CompanyListItem
+                      key={`${company.id}-${idx}`}
+                      company={company}
+                    />
                   ))}
                 </List>
               </CollapseComponent>
