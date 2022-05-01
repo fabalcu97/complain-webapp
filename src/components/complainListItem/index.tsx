@@ -41,7 +41,7 @@ export function ComplainListItem(props: Props) {
 
   return (
     <ListItem
-      className={clsx([styles.complainContainer, containerStyle])}
+      className={clsx([styles.complainContainer, 'clickable', containerStyle])}
       onClick={goToComplain}>
       <Card elevation={2}>
         <CardContent>

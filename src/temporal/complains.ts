@@ -1,9 +1,10 @@
 import { faker } from '@faker-js/faker';
+import { getCompanyDetail } from 'temporal/company';
 import { ComplainStatusEnum, ComplainType } from 'utils/types/complain';
 
-export function generateComplain(companyId: string): ComplainType {
+export function generateComplain(): ComplainType {
   return {
-    companyId,
+    companyId: faker.datatype.uuid(),
     id: faker.datatype.uuid(),
     title: faker.lorem.words(4),
     summary: faker.lorem.paragraph(),
@@ -14,5 +15,6 @@ export function generateComplain(companyId: string): ComplainType {
       1,
     )[0],
     response: faker.lorem.paragraphs(),
+    company: getCompanyDetail(),
   };
 }

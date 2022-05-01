@@ -1,12 +1,9 @@
 import { Container, Grid } from '@mui/material';
 import { CompanyInformation } from 'components/companyInformation';
-import { CompanyReview } from 'components/companyReview';
 import { Complain } from 'components/complain';
-import ComplainList from 'components/complainList';
 import { NextPage } from 'next';
-import { getCompanyDetail } from 'temporal/company';
+import { useRouter } from 'next/router';
 import { generateComplain } from 'temporal/complains';
-import { CompanyDetailType } from 'utils/types/companyDetail';
 import { ComplainType } from 'utils/types/complain';
 import styles from './styles.module.scss';
 
@@ -20,6 +17,9 @@ type ServerSideProps = {
 
 const Company: NextPage<Props> = (props: Props) => {
   const { complain } = props;
+  const router = useRouter();
+
+  const goToCompany = () => router.push(`/company/${complain.companyId}`);
 
   return (
     <Container className={styles.container}>
@@ -28,7 +28,11 @@ const Company: NextPage<Props> = (props: Props) => {
           <Complain complain={complain} />
         </Grid>
         <Grid item xs={12} md={3} order={{ xs: 2, sm: 2, md: 3 }}>
-          {/* <CompanyInformation company={companyDetail} /> */}
+          <CompanyInformation
+            showAvatar
+            company={complain.company}
+            onClick={goToCompany}
+          />
         </Grid>
       </Grid>
     </Container>
@@ -40,7 +44,7 @@ export default Company;
 export async function getServerSideProps(): Promise<ServerSideProps> {
   return {
     props: {
-      complain: generateComplain('123'),
+      complain: generateComplain(),
     },
   };
 }

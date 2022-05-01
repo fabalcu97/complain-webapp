@@ -33,7 +33,7 @@ export function getCompanyComplains(
   const complains: ComplainType[] = [];
 
   for (let count = 0; count < limit; count++) {
-    complains.push(generateComplain(companyId));
+    complains.push(generateComplain());
   }
 
   return new Promise((resolve) => {

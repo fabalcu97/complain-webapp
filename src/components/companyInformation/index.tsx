@@ -1,4 +1,4 @@
-import { Divider, Grid, IconButton, Typography } from '@mui/material';
+import { Avatar, Divider, Grid, IconButton, Typography } from '@mui/material';
 import clsx from 'clsx';
 import { GridItem } from 'components/gridItem';
 import moment from 'moment';
@@ -11,14 +11,33 @@ import styles from './styles.module.scss';
 
 type Props = {
   company: CompanyDetailType;
+  showAvatar: boolean;
+  onClick?: () => void;
 } & BaseComponentProps;
 
+CompanyInformation.defaultProps = {
+  showAvatar: false,
+};
+
 export function CompanyInformation(props: Props) {
-  const { company, containerStyle } = props;
+  const { company, containerStyle, showAvatar, onClick } = props;
 
   return (
     <GridItem
-      className={clsx([styles.companyInformationContainer, containerStyle])}>
+      onClick={onClick}
+      className={clsx([
+        styles.companyInformationContainer,
+        !!onClick && 'clickable',
+        containerStyle,
+      ])}>
+      {showAvatar && (
+        <Avatar
+          component={GridItem}
+          elevation={3}
+          src={company.logoUrl}
+          sx={{ height: '100px', width: '100px', marginBottom: '10px' }}
+        />
+      )}
       <div className={styles.companyDescription}>
         <Typography variant='subtitle1' fontWeight={'500'}>
           About {company.name}
