@@ -36,7 +36,7 @@ export function CompanyReputation(props: Props) {
               textAlign='center'>
               <div className={styles.count}>
                 <SentimentVerySatisfiedIcon color='success' />
-                {normalize(stats.feeling.happy).toFixed(2)}
+                {normalize(stats.feeling.happy).toFixed(0)}%
               </div>
             </Grid>
             <Grid
@@ -48,7 +48,7 @@ export function CompanyReputation(props: Props) {
               borderLeft={'1px solid grey'}>
               <div className={styles.count}>
                 <SentimentNeutralIcon color='warning' />
-                {normalize(stats.feeling.neutral).toFixed(2)}
+                {normalize(stats.feeling.neutral).toFixed(0)}%
               </div>
             </Grid>
             <Grid
@@ -60,7 +60,7 @@ export function CompanyReputation(props: Props) {
               borderLeft={'1px solid grey'}>
               <div className={styles.count}>
                 <SentimentVeryDissatisfiedIcon color='error' />
-                {normalize(stats.feeling.unhappy).toFixed(2)}
+                {normalize(stats.feeling.unhappy).toFixed(0)}%
               </div>
             </Grid>
           </Grid>
@@ -101,7 +101,9 @@ export function CompanyReputation(props: Props) {
           </Typography>
           <ProgressBar
             value={normalize(stats.wouldDoBusinessAgain)}
-            valueToDisplay={`${normalize(stats.wouldDoBusinessAgain).toFixed(2)}%`}
+            valueToDisplay={`${normalize(stats.wouldDoBusinessAgain).toFixed(
+              0,
+            )}%`}
           />
         </GridItem>
       </CardContent>

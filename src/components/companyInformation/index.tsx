@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { GridItem } from 'components/gridItem';
 import moment from 'moment';
 import React from 'react';
-import { BaseComponentProps } from 'utils/types/baseComponentProps';
+import { BaseComponentProps } from 'utils/types/baseComponent';
 import { CompanyDetailType } from 'utils/types/companyDetail';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
@@ -45,7 +45,7 @@ export function CompanyInformation(props: Props) {
         <div className={styles.companyDetails}>
           <Typography variant='subtitle2'>Email</Typography>
           <Typography className={styles.innerText}>
-            {company.contactEmail}
+            {company.contactEmail.toLowerCase()}
           </Typography>
         </div>
         <Divider />

@@ -5,10 +5,12 @@ export enum ComplainStatusEnum {
 
 export type ComplainType = {
   id: string;
-  companyId: string;
   title: string;
   summary: string;
   reasons: string[];
   createdDate: string;
   status: ComplainStatusEnum;
+  companyId: string;
+
+  response?: string;
 };

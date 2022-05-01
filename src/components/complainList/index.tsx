@@ -1,10 +1,10 @@
 import { List, Pagination, Typography } from '@mui/material';
 import clsx from 'clsx';
-import { Complain } from 'components/complain';
+import { ComplainListItem } from 'components/complainListItem';
 import { GridItem } from 'components/gridItem';
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useGetCompanyComplains } from 'utils/hooks/api/useGetCompanyComplains';
-import { BaseComponentProps } from 'utils/types/baseComponentProps';
+import { BaseComponentProps } from 'utils/types/baseComponent';
 import styles from './styles.module.scss';
 
 const ITEMS_PER_PAGE = 20;
@@ -35,10 +35,8 @@ function ComplainList(props: Props) {
         Complains
       </Typography>
       <List className={styles.list} subheader={<li />}>
-        {/* <ListSubheader>
-        </ListSubheader> */}
         {(data?.data || [])?.map((complain) => (
-          <Complain key={complain.id} complain={complain} />
+          <ComplainListItem key={complain.id} complain={complain} />
         ))}
       </List>
       <Pagination

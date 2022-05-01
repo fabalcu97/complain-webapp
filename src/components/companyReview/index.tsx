@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { CompanyReputation } from 'components/companyReputation';
 import { GridItem } from 'components/gridItem';
 import React from 'react';
-import { BaseComponentProps } from 'utils/types/baseComponentProps';
+import { BaseComponentProps } from 'utils/types/baseComponent';
 import { CompanyDetailType } from 'utils/types/companyDetail';
 import styles from './styles.module.scss';
 

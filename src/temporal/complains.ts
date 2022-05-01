@@ -1,6 +1,7 @@
 import { faker } from '@faker-js/faker';
 import { ComplainStatusEnum, ComplainType } from 'utils/types/complain';
-export function generateComplains(companyId: string): ComplainType {
+
+export function generateComplain(companyId: string): ComplainType {
   return {
     companyId,
     id: faker.datatype.uuid(),
@@ -12,5 +13,6 @@ export function generateComplains(companyId: string): ComplainType {
       [ComplainStatusEnum.ANSWERED, ComplainStatusEnum.UNANSWERED],
       1,
     )[0],
+    response: faker.lorem.paragraphs(),
   };
 }

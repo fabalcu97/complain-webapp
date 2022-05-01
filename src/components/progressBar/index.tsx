@@ -1,7 +1,7 @@
 import { LinearProgress, linearProgressClasses } from '@mui/material';
 import clsx from 'clsx';
 import React from 'react';
-import { BaseComponentProps } from 'utils/types/baseComponentProps';
+import { BaseComponentProps } from 'utils/types/baseComponent';
 import styles from './styles.module.scss';
 
 type Props = {

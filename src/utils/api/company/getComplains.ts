@@ -1,4 +1,4 @@
-import { generateComplains } from 'temporal/complains';
+import { generateComplain } from 'temporal/complains';
 import { ComplainType } from 'utils/types/complain';
 
 type CompanyComplainsResponse = {
@@ -31,9 +31,11 @@ export function getCompanyComplains(
 ): Promise<CompanyComplainsResponse> {
   const { limit } = params;
   const complains: ComplainType[] = [];
+
   for (let count = 0; count < limit; count++) {
-    complains.push(generateComplains(companyId));
+    complains.push(generateComplain(companyId));
   }
+
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({ count: 1452, data: complains });
